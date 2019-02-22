@@ -4,4 +4,8 @@ export namespace EndpointModules {
   export enum Utils {
     WrapAync = 'Endpoint/Utils/WrapAsync'
   }
+
+  export enum ImageEndpoints {
+    Upload = 'Endpoint/Image/Upload'
+  }
 }
