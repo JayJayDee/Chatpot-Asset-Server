@@ -2,6 +2,7 @@ export namespace ConfigTypes {
   export type RootConfig = {
     http: HttpConfig;
     credential: CredentialConfig;
+    upload: UploadConfig;
     env: Env;
   };
   export type HttpConfig = {
@@ -11,6 +12,9 @@ export namespace ConfigTypes {
     authEnabled: boolean;
     sessionExpires: number;
     authSecret: string;
+  };
+  export type UploadConfig = {
+    uploadPath: string;
   };
   export enum Env {
     DEV = 'DEV',

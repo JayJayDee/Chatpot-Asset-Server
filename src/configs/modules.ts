@@ -6,6 +6,7 @@ export namespace ConfigModules {
   export const RootConfig = 'Config/RootConfig';
   export const HttpConfig = 'Config/HttpConfig';
   export const CredentialConfig = 'Config/CredentialConfig';
+  export const UploadConfig = 'Config/UploadConfig';
   export const Env = 'Config/Env';
   export const ConfigRules = 'Config/ConfigRules';
 }
