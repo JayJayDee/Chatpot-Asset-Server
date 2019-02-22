@@ -14,6 +14,9 @@ injectable(ConfigModules.EmptyConfig, [], async (): Promise<ConfigTypes.RootConf
     sessionExpires: null,
     authSecret: null
   },
+  upload: {
+    uploadPath: null
+  },
   env: null
 }));
 
@@ -23,7 +26,8 @@ injectable(ConfigModules.ConfigRules, [],
     { key: 'HTTP_PORT', path: ['http', 'port'], defaultValue: 8080 },
     { key: 'CREDENTIAL_AUTH_ENABLED', path: ['credential', 'authEnabled'], defaultValue: false },
     { key: 'CREDENTIAL_AUTH_SECRET', path: ['credential', 'authSecret'] },
-    { key: 'CREDENTIAL_AUTH_SESSION_EXPIRES', path: ['credential', 'sessionExpires'], defaultValue: 60 }
+    { key: 'CREDENTIAL_AUTH_SESSION_EXPIRES', path: ['credential', 'sessionExpires'], defaultValue: 60 },
+    { key: 'UPLOAD_PATH', path: ['upload', 'uploadPath'] }
   ]));
 
 injectable(ConfigModules.ConfigSource,
@@ -45,6 +49,10 @@ injectable(ConfigModules.HttpConfig,
 injectable(ConfigModules.CredentialConfig,
   [ConfigModules.RootConfig],
   async (root: ConfigTypes.RootConfig) => root.credential);
+
+injectable(ConfigModules.UploadConfig,
+  [ConfigModules.RootConfig],
+  async (root: ConfigTypes.RootConfig) => root.upload);
 
 injectable(ConfigModules.Env,
   [ConfigModules.ConfigSource],
