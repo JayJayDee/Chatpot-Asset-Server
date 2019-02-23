@@ -3,5 +3,5 @@ export namespace MiddlewareModules {
   export const Error = 'Middleware/Error';
   export const Authentication = 'Middleware/Authenticaion';
 
-  export const SingleMulter = 'Middleware/SingleMulter';
+  export const MulterInstance = 'Middleware/MulterInstance';
 }

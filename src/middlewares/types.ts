@@ -6,5 +6,5 @@ export namespace MiddlewareTypes {
   export type Error = ErrorRequestHandler;
   export type Authentication = RequestHandler;
   export type Authorization = (memberTokenPath: string[]) => RequestHandler;
-  export type SingleMulter = (fileName: string) => Instance;
+  export type MulterInstance = Instance;
 }
