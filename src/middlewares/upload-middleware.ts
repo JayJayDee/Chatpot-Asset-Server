@@ -4,7 +4,7 @@ import { ConfigModules, ConfigTypes } from '../configs';
 import { MiddlewareTypes } from './types';
 import * as multer from 'multer';
 
-injectable(MiddlewareModules.SingleMulter,
+injectable(MiddlewareModules.MulterInstance,
   [ ConfigModules.UploadConfig ],
-  async (cfg: ConfigTypes.UploadConfig): Promise<MiddlewareTypes.SingleMulter> =>
-    (fileName: string) => multer({ dest: cfg.uploadPath }));
+  async (cfg: ConfigTypes.UploadConfig): Promise<MiddlewareTypes.MulterInstance> =>
+    multer({ dest: cfg.uploadPath }));
