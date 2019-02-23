@@ -3,12 +3,15 @@ import { EndpointModules } from './modules';
 import { EndpointTypes } from './types';
 import { MiddlewareModules, MiddlewareTypes } from '../middlewares';
 import { InvalidParamError } from '../errors';
+import { UtilModules, UtilTypes } from '../utils';
 
 injectable(EndpointModules.ImageEndpoints.Upload,
   [ EndpointModules.Utils.WrapAync,
-    MiddlewareModules.MulterInstance ],
+    MiddlewareModules.MulterInstance,
+    UtilModules.Image.GenerateThumbnail ],
   async (wrapAsyc: EndpointTypes.Utils.WrapAsync,
-    upload: MiddlewareTypes.MulterInstance): Promise<EndpointTypes.Endpoint> =>
+    upload: MiddlewareTypes.MulterInstance,
+    thumbnail: UtilTypes.Image.GenerateThumbnail): Promise<EndpointTypes.Endpoint> =>
 
   ({
     uri: '/image/upload',
