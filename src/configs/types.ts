@@ -15,6 +15,7 @@ export namespace ConfigTypes {
   };
   export type UploadConfig = {
     uploadPath: string;
+    absoluteUrl: string;
   };
   export enum Env {
     DEV = 'DEV',

@@ -4,14 +4,17 @@ import { EndpointTypes } from './types';
 import { MiddlewareModules, MiddlewareTypes } from '../middlewares';
 import { InvalidParamError } from '../errors';
 import { UtilModules, UtilTypes } from '../utils';
+import { ConfigModules, ConfigTypes } from '../configs';
 
 injectable(EndpointModules.ImageEndpoints.Upload,
   [ EndpointModules.Utils.WrapAync,
     MiddlewareModules.MulterInstance,
-    UtilModules.Image.GenerateThumbnail ],
+    UtilModules.Image.GenerateThumbnail,
+    ConfigModules.UploadConfig ],
   async (wrapAsyc: EndpointTypes.Utils.WrapAsync,
     upload: MiddlewareTypes.MulterInstance,
-    thumbnail: UtilTypes.Image.GenerateThumbnail): Promise<EndpointTypes.Endpoint> =>
+    getThumbnail: UtilTypes.Image.GenerateThumbnail,
+    cfg: ConfigTypes.UploadConfig): Promise<EndpointTypes.Endpoint> =>
 
   ({
     uri: '/image/upload',
@@ -22,18 +25,11 @@ injectable(EndpointModules.ImageEndpoints.Upload,
         const file = req.file;
         if (!file) throw new InvalidParamError('form-data/image upload required');
 
-        /*
-          { fieldname: 'image',
-  originalname: 'Screen Shot 2019-02-19 at 5.23.19 PM.png',
-  encoding: '7bit',
-  mimetype: 'image/png',
-  destination: '/Users/jayjaydee/chatpot-asset-temp',
-  filename: '8e896b7f57f57f8b8d5ff814e677cdd0',
-  path:
-   '/Users/jayjaydee/chatpot-asset-temp/8e896b7f57f57f8b8d5ff814e677cdd0',
-  size: 245344 }
-        */
-        res.status(200).send({});
+        const thumbnail = await getThumbnail(file.path, file.filename);
+        res.status(200).send({
+          orig: `${cfg.absoluteUrl}/${file.filename}`,
+          thumbnail: `${cfg.absoluteUrl}/${thumbnail.fileName}`
+        });
       })
     ]
   }));
