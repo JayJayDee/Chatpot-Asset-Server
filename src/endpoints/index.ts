@@ -5,7 +5,8 @@ export { EndpointModules } from './modules';
 
 // register endpoints to container.
 injectable(EndpointModules.Endpoints,
-  [ EndpointModules.ImageEndpoints.Upload ],
+  [ EndpointModules.ImageEndpoints.Upload,
+    EndpointModules.AvatarEndpoints.GET ],
 
-  async (imageUpload) =>
-    ([ imageUpload ]));
+  async (imageUpload, avatarGet) =>
+    ([ imageUpload, avatarGet ]));
