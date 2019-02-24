@@ -9,6 +9,14 @@ injectable(ConfigModules.EmptyConfig, [], async (): Promise<ConfigTypes.RootConf
   http: {
     port: null
   },
+  mysql: {
+    host: null,
+    port: null,
+    database: null,
+    user: null,
+    password: null,
+    connectionLimit: null
+  },
   credential: {
     authEnabled: null,
     sessionExpires: null,
@@ -25,6 +33,12 @@ injectable(ConfigModules.EmptyConfig, [], async (): Promise<ConfigTypes.RootConf
 injectable(ConfigModules.ConfigRules, [],
   async (): Promise<ConfigTypes.ConfigRule[]> => ([
     { key: 'HTTP_PORT', path: ['http', 'port'], defaultValue: 8080 },
+    { key: 'MYSQL_HOST', path: ['mysql', 'host'] },
+    { key: 'MYSQL_PORT', path: ['mysql', 'port'] },
+    { key: 'MYSQL_USER', path: ['mysql', 'user'] },
+    { key: 'MYSQL_PASSWORD', path: ['mysql', 'password'] },
+    { key: 'MYSQL_DATABASE', path: ['mysql', 'database'] },
+    { key: 'MYSQL_CONNECTION_LIMIT', path: ['mysql', 'connectionLimit'], defaultValue: 10 },
     { key: 'CREDENTIAL_AUTH_ENABLED', path: ['credential', 'authEnabled'], defaultValue: false },
     { key: 'CREDENTIAL_AUTH_SECRET', path: ['credential', 'authSecret'] },
     { key: 'CREDENTIAL_AUTH_SESSION_EXPIRES', path: ['credential', 'sessionExpires'], defaultValue: 60 },
@@ -55,6 +69,10 @@ injectable(ConfigModules.CredentialConfig,
 injectable(ConfigModules.UploadConfig,
   [ConfigModules.RootConfig],
   async (root: ConfigTypes.RootConfig) => root.upload);
+
+injectable(ConfigModules.MysqlConfig,
+  [ConfigModules.RootConfig],
+  async (root: ConfigTypes.RootConfig) => root.mysql);
 
 injectable(ConfigModules.Env,
   [ConfigModules.ConfigSource],

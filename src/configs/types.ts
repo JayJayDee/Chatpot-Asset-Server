@@ -3,10 +3,19 @@ export namespace ConfigTypes {
     http: HttpConfig;
     credential: CredentialConfig;
     upload: UploadConfig;
+    mysql: MysqlConfig;
     env: Env;
   };
   export type HttpConfig = {
     port: number;
+  };
+  export type MysqlConfig = {
+    host: string;
+    port: number;
+    user: string;
+    password: string;
+    database: string;
+    connectionLimit: number;
   };
   export type CredentialConfig = {
     authEnabled: boolean;
