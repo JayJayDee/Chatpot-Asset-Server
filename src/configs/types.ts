@@ -4,6 +4,7 @@ export namespace ConfigTypes {
     credential: CredentialConfig;
     upload: UploadConfig;
     mysql: MysqlConfig;
+    asset: AssetsConfig;
     env: Env;
   };
   export type HttpConfig = {
@@ -25,6 +26,9 @@ export namespace ConfigTypes {
   export type UploadConfig = {
     uploadPath: string;
     absoluteUrl: string;
+  };
+  export type AssetsConfig = {
+    avatarAssetPath: string;
   };
   export enum Env {
     DEV = 'DEV',

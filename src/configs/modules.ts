@@ -8,6 +8,7 @@ export namespace ConfigModules {
   export const MysqlConfig = 'Config/MysqlConfig';
   export const CredentialConfig = 'Config/CredentialConfig';
   export const UploadConfig = 'Config/UploadConfig';
+  export const AssetConfig = 'Config/AssetConfig';
   export const Env = 'Config/Env';
   export const ConfigRules = 'Config/ConfigRules';
 }

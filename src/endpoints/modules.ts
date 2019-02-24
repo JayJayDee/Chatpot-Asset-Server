@@ -8,4 +8,7 @@ export namespace EndpointModules {
   export enum ImageEndpoints {
     Upload = 'Endpoint/Image/Upload'
   }
+  export enum AvatarEndpoints {
+    GET = 'Endpoint/Avatar/Get'
+  }
 }
