@@ -26,6 +26,9 @@ injectable(ConfigModules.EmptyConfig, [], async (): Promise<ConfigTypes.RootConf
     uploadPath: null,
     absoluteUrl: null
   },
+  asset: {
+    avatarAssetPath: null
+  },
   env: null
 }));
 
@@ -43,7 +46,8 @@ injectable(ConfigModules.ConfigRules, [],
     { key: 'CREDENTIAL_AUTH_SECRET', path: ['credential', 'authSecret'] },
     { key: 'CREDENTIAL_AUTH_SESSION_EXPIRES', path: ['credential', 'sessionExpires'], defaultValue: 60 },
     { key: 'UPLOAD_PATH', path: ['upload', 'uploadPath'] },
-    { key: 'UPLOAD_ABSOLUTE_URL', path: ['upload', 'absoluteUrl']}
+    { key: 'UPLOAD_ABSOLUTE_URL', path: ['upload', 'absoluteUrl']},
+    { key: 'ASSET_AVATAR_ASSET_PATH', path: ['asset', 'avatarAssetPath']}
   ]));
 
 injectable(ConfigModules.ConfigSource,
@@ -73,6 +77,10 @@ injectable(ConfigModules.UploadConfig,
 injectable(ConfigModules.MysqlConfig,
   [ConfigModules.RootConfig],
   async (root: ConfigTypes.RootConfig) => root.mysql);
+
+injectable(ConfigModules.AssetConfig,
+  [ConfigModules.RootConfig],
+  async (root: ConfigTypes.RootConfig) => root.asset);
 
 injectable(ConfigModules.Env,
   [ConfigModules.ConfigSource],

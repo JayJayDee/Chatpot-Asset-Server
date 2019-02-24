@@ -13,7 +13,7 @@ injectable(UtilModules.Image.GenerateThumbnail,
       const thumbName = extToJpg(`thumb_${filename}`);
       const thumbPath = extToJpg(join(cfg.uploadPath, thumbName));
 
-      await sharp(origFilePath).resize(300, 300).toFile(thumbPath);
+      await sharp(origFilePath).resize(250, 250).toFile(thumbPath);
       return {
         fileName: thumbName,
         filePath: thumbPath
@@ -21,4 +21,4 @@ injectable(UtilModules.Image.GenerateThumbnail,
     });
 
 const extToJpg = (path: string) =>
-`${path.split(extname(path))[0]}.jpg`;
+  `${path.split(extname(path))[0]}.jpg`;
