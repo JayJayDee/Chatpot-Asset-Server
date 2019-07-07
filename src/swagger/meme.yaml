@@ -1,0 +1,63 @@
+---
+tags:
+  name: Meme
+  description: 내 짤 업로드 및 관리 APIs
+
+/meme/{member_token}/upload:
+  post:
+    summary: 내 짤 업로드 api
+    tags: [Meme]
+    parameters:
+      - name: member_token
+        in: path
+        required: true
+        type: string
+        description: 회원 token
+      - name: image
+        in: formData
+        required: true
+        type: file
+        description: 이미지 파일
+    responses:
+      200:
+        description: 성공
+        schema:
+          $ref: '#/definitions/Meme'
+
+/meme/{member_token}/meme/{meme_id}:
+  delete:
+    summary: 내 짤 삭제 api.
+    tags: [Meme]
+    parameters:
+      - name: member_token
+        in: path
+        required: true
+        type: string
+        description: 회원 token
+      - name: meme_id
+        in: path
+        required: true
+        type: number
+        description: 짤의 고유 ID.
+    responses:
+      200:
+        description: 성공
+        schema:
+          $ref: '#/definitions/Ok'
+
+/meme/{member_token}/memes:
+  get:
+    summary: 내 짤 목록 반환
+    tags: [Meme]
+    parameters:
+      - name: member_token
+        in: path
+        required: true
+        type: string
+        description: 회원 token
+    responses:
+      200:
+        description: 성공
+        type: array
+        items:
+          $ref: '#/definitions/Meme'
