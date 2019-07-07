@@ -24,9 +24,13 @@ export namespace ModelTypes {
       image_url: string;
       thumb_url: string;
     };
+    type MemeDeleteParam = {
+      member_no: number;
+      meme_id: number;
+    };
 
     export type InsertMeme = (param: MemeCreateParam) => Promise<MemeCreateRes>;
     export type GetMemes = (memberNo: number) => Promise<MemeEntity[]>;
-    export type DeleteMeme = (memeId: number) => Promise<void>;
+    export type DeleteMeme = (param: MemeDeleteParam) => Promise<void>;
   }
 }
