@@ -1,0 +1,20 @@
+---
+tags:
+  name: Image
+  description: 이미지 업로드 APIs
+
+/image/upload:
+  post:
+    summary: 이미지 업로드 api
+    tags: [Image]
+    parameters:
+      - name: image
+        in: formData
+        required: true
+        type: file
+        description: 이미지 파일
+    responses:
+      200:
+        description: 성공
+        schema:
+          $ref: '#/definitions/UploadedImage'

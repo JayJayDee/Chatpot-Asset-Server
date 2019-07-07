@@ -11,4 +11,9 @@ export namespace EndpointModules {
   export enum AvatarEndpoints {
     GET = 'Endpoint/Avatar/Get'
   }
+  export enum MemeEndpoints {
+    Upload = 'Endpoint/Meme/Upload',
+    Delete = 'Endpoint/Meme/Delete',
+    Memes = 'Endpoint/Meme/Memes'
+  }
 }
