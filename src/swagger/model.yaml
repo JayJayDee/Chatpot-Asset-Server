@@ -83,4 +83,17 @@ definitions:
       thumbnail:
         type: string
         description: 생성된 썸네일 URL
+
+  Meme:
+    type: object
+    properties:
+      meme_id:
+        type: number
+        description: 짤의 고유 ID.
+      orig:
+        type: string
+        description: 업로드된 이미지 URL
+      thumb:
+        type: string
+        description: 생성된 썸네일 URL
       
