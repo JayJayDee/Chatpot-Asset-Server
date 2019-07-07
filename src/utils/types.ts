@@ -16,6 +16,7 @@ export namespace UtilTypes {
 
   export namespace Auth {
     export type ValidateSessionKey = (sessionKey: string) => DecryptedSessionKey;
+    export type DecryptMemberToken = (memberToken: string) => MemberPayload;
   }
   export namespace Image {
     export type GenerateThumbnail = (origPath: string, filename: string) => Promise<Thumbnail>;
